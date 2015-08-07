@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2015 at 11:06 AM
+-- Generation Time: Aug 07, 2015 at 09:28 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `blogs` (
   `title` mediumtext CHARACTER SET utf8 NOT NULL,
   `content` longtext CHARACTER SET utf8 NOT NULL,
   `blog_day` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `blogs`
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `comment` mediumtext CHARACTER SET utf8 NOT NULL,
   `comment_day` datetime NOT NULL,
   `blogs_id` int(10) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comments`
@@ -62,10 +62,10 @@ CREATE TABLE IF NOT EXISTS `comments` (
 
 INSERT INTO `comments` (`id`, `name`, `comment`, `comment_day`, `blogs_id`) VALUES
 (2, 'Vô Danh', 'Bài viết rất hay!!! Mong có thêm  nhiều bài như thế này nữa!!', '2015-08-02 18:40:30', 2),
-(8, 'ghjghj', 'ghjghj', '2015-08-04 09:59:01', 2),
-(9, 'fghf', 'fghfgh', '2015-08-04 09:59:06', 2),
 (10, 'Nguyễn Lâm', 'Thật không thể tin được', '2015-08-04 10:02:53', 17),
-(11, 'Vinamilk', 'Hâm mộ quá đi', '2015-08-04 10:03:23', 17);
+(11, 'Vinamilk', 'Hâm mộ quá đi', '2015-08-04 10:03:23', 17),
+(25, 'Hư Cấu', 'Thật không thể tin được!', '2015-08-04 11:10:23', 2),
+(26, 'Chém gió tiên sinh', 'lựa chọn thông minh', '2015-08-04 11:12:41', 2);
 
 -- --------------------------------------------------------
 
@@ -119,12 +119,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -138,7 +138,7 @@ ALTER TABLE `users`
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `fk_comments_blogs` FOREIGN KEY (`blogs_id`) REFERENCES `blogs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_comments_blogs` FOREIGN KEY (`blogs_id`) REFERENCES `blogs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

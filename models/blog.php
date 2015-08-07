@@ -32,7 +32,7 @@ class Blog extends Model{
     public function deleteBlog($id) {
         $where = "id=" . $id;
         //Xóa các bình luận có liên kết với bài viết cần xóa
-        db_delete("comments", "blogs_id=".$id);
+        //db_delete("comments", "blogs_id=".$id);
         //echo "blogs_id=".$where . "comments";die;
         return db_delete($this->table,$where);
     }

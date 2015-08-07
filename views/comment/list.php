@@ -18,7 +18,7 @@
         <td><?php echo $b['comment']; ?></td>
         <td><?php echo $b['comment_day']; ?></td>
         <td>
-            <a href="admin.php?c=comment&m=delete&id=<?php echo $b['id']; ?>" class="btn btn-primary">Delete</a>
+            <a onclick="return confirm('Bạn thực sự muốn xóa comment này?')" href="admin.php?c=comment&m=delete&id=<?php echo $b['id']; ?>" class="btn btn-primary">Delete</a>
         </td>
     </tr>
     <?php        

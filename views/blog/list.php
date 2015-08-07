@@ -22,7 +22,7 @@
         <td><?php echo $b['content']; ?></td>
         <td><?php echo $b['blog_day']; ?></td>
         <td>
-            <a href="admin.php?c=blog&m=delete&id=<?php echo $b['id']; ?>" class="btn btn-primary">Delete</a>
+            <a onclick="return confirm('Bạn thực sự muốn xóa bài viết này?')" href="admin.php?c=blog&m=delete&id=<?php echo $b['id']; ?>" class="btn btn-primary">Delete</a>
         </td>
         <td>
             <a href="admin.php?c=blog&m=update&id=<?php echo $b['id']; ?>" class="btn btn-primary">Update</a>
