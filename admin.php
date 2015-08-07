@@ -10,6 +10,7 @@ $method = empty($_GET['m']) ? 'admin' : strtolower($_GET['m']);
 
 $c_file = ROOT . DS . 'controllers' . DS . $controller . '.php';
 $m_func = $controller . '_' . $method;
+
 //echo $m_func;die;
 if (is_readable($c_file)) {
     include $c_file;
