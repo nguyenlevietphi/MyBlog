@@ -40,6 +40,7 @@ function isPostRequest() {
 }
 
 function postData() {
+    //var_dump($_POST);die;
     return $_POST;
 }
 
