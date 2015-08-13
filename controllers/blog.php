@@ -3,11 +3,15 @@
 function blog_list() {
 	$data = array();
 	$currentUser = isLogged();
-	
-	$data['blog_data'] = model('blog')->getAll();
-	/*var_dump($data);die;*/
-	$data['template_file'] = 'blog/list.php';
-	render('layout.php', $data);
+
+    if($currentUser['role']==1)
+    {
+        $data['blog_data'] = model('blog')->getAll();
+        /*var_dump($data);die;*/
+        $data['template_file'] = 'blog/list.php';
+        render('layout.php', $data);
+    }
+    else redirect('/index.php?c=blog&m=list_client');	
 }
 
 function blog_add() {
@@ -15,7 +19,7 @@ function blog_add() {
         $postData = postData();
         $currentUser = isLogged();
         if (model('blog')->addDayBlog($postData)) {
-            redirect('/admin.php?c=blog&m=list');
+            redirect('/index.php?c=blog&m=list');
         }
     }
     
@@ -30,7 +34,7 @@ function blog_update() {
         $postData = postData();
         $currentUser = isLogged();
         if (model('blog')->updateBlog($postData, $id)) {
-            redirect('/admin.php?c=blog&m=list');
+            redirect('/index.php?c=blog&m=list');
         }
     }
     $data['blog_object'] = model('blog')->getOneBlog($id);
@@ -43,8 +47,8 @@ function blog_delete() {
 	$id = $_GET['id'];
 	$currentUser = isLogged();
 	/*var_dump($id);die;*/
-	if (model('blog')->deleteBlog($id)) {
-            redirect('/admin.php?c=blog&m=list');
+	if (model('blog')->deleteOne($id)) {
+            redirect('/index.php?c=blog&m=list');
         }
 }
 
@@ -54,7 +58,7 @@ function blog_list_client() {
     $data['blog_data'] = model('blog')->getAll();
     /*var_dump($data);die;*/
     $data['template_file'] = 'blog/list_client.php';
-    render('layout_client.php', $data);
+    render('layout.php', $data);
 }
 
 function blog_detail() {
@@ -63,7 +67,7 @@ function blog_detail() {
     if (isPostRequest()) {
         $postData = postData();
         $currentUser = isLogged();
-        if (model('blog')->addDayComment($postData, $id)) {
+        if (model('blog')->addComment($postData, $id)) {
             redirect('/index.php?c=blog&m=detail&id='.$id);
         }
     }
@@ -72,5 +76,5 @@ function blog_detail() {
 
     //var_dump($data);die;
     $data['template_file'] = 'blog/viewBlog.php';
-    render('layout_client.php', $data);
+    render('layout.php', $data);
 }

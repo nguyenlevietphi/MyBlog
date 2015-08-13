@@ -28,6 +28,7 @@ function db_get_all($sql) {
 function db_get_one($sql) {
     $result = mysql_query($sql);
     $data = mysql_fetch_assoc($result);
+    //var_dump($data);die;
     return $data;
 }
 
