@@ -4,11 +4,6 @@ class Blog extends Model{
     public $table = 'blogs';
     public $primary_key = 'id';
     
-    public function getOneBlog($id) {
-        $sql = "SELECT * FROM {$this->table} WHERE id=" . $id;
-        return db_get_one($sql);
-    }
-    
     public function addDayBlog($postData) {
         $postData['blog_day'] = date("Y-m-d H:i:s");
         

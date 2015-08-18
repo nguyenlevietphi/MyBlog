@@ -4,12 +4,13 @@
 <p>
     <a href="index.php?c=blog&m=add" class="btn btn-primary">Add New Blog</a>
 </p>
-<table class="table table-bordered" border="1">
+<table class="table table-bordered">
     <tr>
         <th>#</th>
         <th>Tiêu đề</th>
         <!-- <th>Nội dung</th> -->
         <th>Ngày viết</th>
+        <th>Chức năng</th>
     </tr>
     <?php
         $i = 0;

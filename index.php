@@ -11,7 +11,19 @@ $method = empty($_GET['m']) ? 'index' : strtolower($_GET['m']);
 $c_file = ROOT . DS . 'controllers' . DS . $controller . '.php';
 $m_func = $controller . '_' . $method;
 
-//echo $m_func;die;
+/*if(isset($_POST['delete'])){
+	$c_file = ROOT . DS . 'controllers' . DS . $_POST['delete'] . '.php';
+	$m_func = $_POST['delete'] . '_' . 'delete';
+}
+elseif(isset($_POST['update'])){
+	$c_file = ROOT . DS . 'controllers' . DS . $_POST['update'] . '.php';
+	$m_func = $_POST['update'] . '_' . 'delete';
+}
+else{
+	$c_file = ROOT . DS . 'controllers' . DS . $controller . '.php';
+	$m_func = $controller . '_' . $method;
+}*/
+
 if (is_readable($c_file)) {
     include $c_file;
     call_user_func($m_func);

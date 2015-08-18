@@ -51,7 +51,6 @@ function db_update($table, $data, $where) {
     foreach ($fields as $field) {
         $sets[] = "{$field} = '{$e_data[$field]}'";
     }
-    
     $sql = "UPDATE `{$table}` SET "  . implode(", ", $sets) . " WHERE {$where}";
     mysql_query($sql);
     

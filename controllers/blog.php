@@ -32,12 +32,12 @@ function blog_update() {
 
     if (isPostRequest()) {
         $postData = postData();
-        $currentUser = isLogged();
+        /*$currentUser = isLogged();*/
         if (model('blog')->updateBlog($postData, $id)) {
             redirect('/index.php?c=blog&m=list');
         }
     }
-    $data['blog_object'] = model('blog')->getOneBlog($id);
+    $data['blog_object'] = model('blog')->getOne($id);
     //var_dump($data);die;
     $data['template_file'] = 'blog/update.php';
     render('layout.php', $data);
@@ -49,7 +49,7 @@ function blog_delete() {
 	/*var_dump($id);die;*/
 	if (model('blog')->deleteOne($id)) {
             redirect('/index.php?c=blog&m=list');
-        }
+    }
 }
 
 //Chức năng dành cho client

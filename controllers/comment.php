@@ -22,5 +22,5 @@ function comment_delete() {
 	/*var_dump($id);die;*/
 	if (model('comment')->deleteOne($id)) {
             redirect('/index.php?c=comment&m=list&id='.$blogs_id);
-        }
+    }
 }

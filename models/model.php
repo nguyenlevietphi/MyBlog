@@ -18,6 +18,11 @@ class Model{
         
         return isset($rows[0]) ? $rows[0] : false;
     }
+
+    public function getOne($id) {
+        $sql = "SELECT * FROM {$this->table} WHERE id=" . $id;
+        return db_get_one($sql);
+    }
     
     public function deleteOne($id) {
         $where = "id=" . $id;
