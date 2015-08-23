@@ -37,6 +37,7 @@ function db_insert($table, $data) {
     $e_data = array_map('mysql_real_escape_string', $data);
     
     $sql = "INSERT INTO `{$table}` (`" . implode('`, `', $fields). "`) VALUES ('"  . implode("', '", $e_data) . "')";
+
     mysql_query($sql);
     
     $inserted_id = mysql_insert_id();
